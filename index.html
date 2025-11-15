@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBASH'S PORTFOLIO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #111216;
+            color: #F3F3F7;
+            font-family: 'IBM Plex Mono', 'Space Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 24px;
+        }
+
+        .hero-name {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-role {
+            font-size: 14px;
+            color: #CFFF47;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-tagline {
+            font-size: 13px;
+            color: #9E9EA7;
+            max-width: 500px;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: #CFFF47;
+            color: #111216;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(207, 255, 71, 0.3);
+        }
+
+        .cta-btn:hover {
+            box-shadow: 0 0 30px rgba(207, 255, 71, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #CFFF47;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #CFFF47;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 700px;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #B8B8C0;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: rgba(207, 255, 71, 0.3);
+            box-shadow: 0 0 20px rgba(207, 255, 71, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .skill-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #CFFF47;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            font-size: 12px;
+            color: #9E9EA7;
+            margin-bottom: 8px;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .skill-card li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: #CFFF47;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .cert-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            border-color: rgba(191, 175, 248, 0.3);
+            box-shadow: 0 0 20px rgba(191, 175, 248, 0.1);
+        }
+
+        .cert-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #F3F3F7;
+        }
+
+        .cert-meta {
+            font-size: 12px;
+            color: #BFAFF8;
+            margin-bottom: 4px;
+        }
+
+        .cert-desc {
+            font-size: 12px;
+            color: #9E9EA7;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #CFFF47, #BFAFF8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: rgba(207, 255, 71, 0.3);
+            box-shadow: 0 0 20px rgba(207, 255, 71, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #F3F3F7;
+        }
+
+        .project-subtitle {
+            font-size: 12px;
+            color: #BFAFF8;
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            font-size: 12px;
+            color: #9E9EA7;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tech-tag {
+            font-size: 11px;
+            padding: 4px 10px;
+            background: rgba(207, 255, 71, 0.1);
+            border: 1px solid rgba(207, 255, 71, 0.3);
+            border-radius: 12px;
+            color: #CFFF47;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #F3F3F7;
+        }
+
+        .contact-item:hover {
+            border-color: rgba(207, 255, 71, 0.3);
+            box-shadow: 0 0 20px rgba(207, 255, 71, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 20px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: #9E9EA7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-value {
+            font-size: 13px;
+            color: #F3F3F7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 11px;
+            color: #6E6E78;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 24px;
+            }
+
+            .hero-role {
+                font-size: 12px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .section-title {
+                font-size: 14px;
+                margin-bottom: 40px;
+            }
+
+            .skills-grid,
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-name">SUBASH CHANDRA BOSE M.</h1>
+        <p class="hero-role">data_science_student &amp; agentic_ai_developer</p>
+        <p class="hero-tagline">// building impactful and sustainable AI solutions</p>
+        <a href="#contact" class="cta-btn">GET IN TOUCH</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">about_me</h2>
+            <div class="about-content">
+                <p>Solution-driven, tech-obsessed developer based in Chennai. Currently pursuing B.Tech in AI & Data Science at MNM Jain Engineering College (2022–2026). Mission-focused on designing, building, and deploying AI applications that solve real-world business problems using free and open resources.</p>
+                <br>
+                <p>From data analytics to agentic AI workflows, I transform ideas into functional, impactful code. When not coding, you'll find me watching TED Talks, exploring startup podcasts, and tinkering with the latest AI frameworks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>DATA ANALYTICS</h3>
+                    <ul>
+                        <li>Data preprocessing & EDA</li>
+                        <li>SQL query optimization</li>
+                        <li>Dashboard creation</li>
+                        <li>Business insights extraction</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>MACHINE LEARNING</h3>
+                    <ul>
+                        <li>Regression & classification</li>
+                        <li>Model evaluation & tuning</li>
+                        <li>Pipeline automation</li>
+                        <li>Time series forecasting</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>GENAI & LLMs</h3>
+                    <ul>
+                        <li>Prompt engineering</li>
+                        <li>RAG implementations</li>
+                        <li>Embeddings & vector DBs</li>
+                        <li>Stable Diffusion pipelines</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>AGENTIC AI</h3>
+                    <ul>
+                        <li>ReAct pattern implementation</li>
+                        <li>Tool-use & function calling</li>
+                        <li>Multi-step reasoning loops</li>
+                        <li>Agentic reporting systems</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>PROGRAMMING</h3>
+                    <ul>
+                        <li>Python (pandas, numpy, FastAPI)</li>
+                        <li>Git & GitHub workflows</li>
+                        <li>Streamlit & Gradio UIs</li>
+                        <li>Cloud deployment basics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="cert-title">AI Agents Intensive Course</div>
+                    <div class="cert-meta">Kaggle + Google | DEC 2025</div>
+                    <div class="cert-desc">Advanced agentic workflows and LLM orchestration</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">Develop GenAI Applications - Part of IBM RAG & Agentic AI Professional Certification</div>
+                    <div class="cert-meta">IBM | NOV 2025</div>
+                    <div class="cert-desc">LLM evaluation & optimization, RAG system design & implementation and Document processing</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">Fundamentals of MCP</div>
+                    <div class="cert-meta">Hugging Face | AUG 2025</div>
+                    <div class="cert-desc">MCP fundamentals, LLM–tool communication, and interoperability</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">Fundamentals of AI Agents</div>
+                    <div class="cert-meta">Hugging Face | JUN 2025</div>
+                    <div class="cert-desc">Agent architectures, LLM reasoning loops and Planning & self-correction in agents</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">Supervised Machine Learning: Regression & Classification</div>
+                    <div class="cert-meta">Deeplearning.ai | AUG 2024</div>
+                    <div class="cert-desc">Linear/Logistic Regression fundamentals, Model evaluation metrics and Building ML pipelines in Python</div>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-title">Google Data Analytics Professional Certification</div>
+                    <div class="cert-meta">Google | JUL 2024</div>
+                    <div class="cert-desc">Data preprocessing, EDA, Spreadsheets, SQL, and data workflows, Dashboards, Business problem framing & insights generation</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-title">PYTHON TEXT ANALYZER</div>
+                    <div class="project-subtitle">NLP Analysis Tool</div>
+                    <div class="project-desc">Built a comprehensive text analysis tool with NLP capabilities and interactive UI for reporting insights.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Streamlit</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">SALES ANALYTIC DASHBOARD</div>
+                    <div class="project-subtitle">Interactive BI Dashboard</div>
+                    <div class="project-desc">Created dynamic sales dashboard with forecasting capabilities using Plotly for real-time business insights.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PowerBI</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Forecasting</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">STABLE DIFFUSION GENERATOR</div>
+                    <div class="project-subtitle">Image Generation App</div>
+                    <div class="project-desc">Developed custom image generation interface with Diffusers library, supporting GPU acceleration and custom parameters.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Diffusers</span>
+                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">GPU</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">RAG BASED CHATBOT</div>
+                    <div class="project-subtitle">Retrieval-Augmented Chatbot</div>
+                    <div class="project-desc">Implemented RAG system with FAISS/Chroma for document retrieval, chunking strategies, and LLM integration.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Embeddings</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">MARKET INTELLIGENCE AGENT</div>
+                    <div class="project-subtitle">Multi-Step Agentic System</div>
+                    <div class="project-desc">Built autonomous market analysis agent with multi-step reasoning, chart generation, and PDF/HTML report output.</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Agentic AI</span>
+                        <span class="tech-tag">ReAct</span>
+                        <span class="tech-tag">Reporting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">contact</h2>
+            <div class="contact-grid">
+                <a href="mailto:subash.exec@gmail.com" class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <div class="contact-label">email</div>
+                        <div class="contact-value">subash.exec@gmail.com</div>
+                    </div>
+                </a>
+                <a href="tel:+918778113185" class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <div class="contact-label">phone</div>
+                        <div class="contact-value">+91 8778113185</div>
+                    </div>
+                </a>
+                <a href="https://linkedin.com/in/subashchandrabosem" target="_blank" class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <div class="contact-label">linkedin</div>
+                        <div class="contact-value">/subashchandrabosem</div>
+                    </div>
+                </a>
+                <a href="https://github.com/subashexec-hue" target="_blank" class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <div>
+                        <div class="contact-label">github</div>
+                        <div class="contact-value">/subashexec-hue</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 subash_chandra_bose_m. built_with_code_and_curiosity();</p>
+        </div>
+    </footer>
+</body>
+</html>
